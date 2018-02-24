@@ -4,6 +4,7 @@
 //
 //  Created by Nate Murray on 6/2/14.
 //  Copyright (c) 2014 Fullstack.io. All rights reserved.
+//  
 //
 
 import SpriteKit
@@ -103,17 +104,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         birdTexture1.filteringMode = .nearest
         let birdTexture2 = SKTexture(imageNamed: "bird-02")
         birdTexture2.filteringMode = .nearest
+        let birdTexture3 = SKTexture(imageNamed: "bird-03")
+        birdTexture1.filteringMode = .nearest
+        let birdTexture4 = SKTexture(imageNamed: "bird-04")
+        birdTexture2.filteringMode = .nearest
         
-        let anim = SKAction.animate(with: [birdTexture1, birdTexture2], timePerFrame: 0.2)
+        let anim = SKAction.animate(with: [birdTexture1,birdTexture2,birdTexture3,birdTexture4], timePerFrame: 0.1)
         let flap = SKAction.repeatForever(anim)
         
         bird = SKSpriteNode(texture: birdTexture1)
-        bird.setScale(2.0)
+        bird.setScale(1.5)
         bird.position = CGPoint(x: self.frame.size.width * 0.35, y:self.frame.size.height * 0.6)
         bird.run(flap)
         
         
-        bird.physicsBody = SKPhysicsBody(circleOfRadius: bird.size.height / 2.0)
+        bird.physicsBody = SKPhysicsBody(circleOfRadius: (bird.size.height) / 2.0)
         bird.physicsBody?.isDynamic = true
         bird.physicsBody?.allowsRotation = false
         
